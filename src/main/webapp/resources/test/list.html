@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>List</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .list {
+            display: flex;
+            flex-wrap: wrap;
+            list-style-type: none;
+        }
+        .item-wrap {
+            margin: 20px;
+        }
+        .item {
+            min-width: 250px;
+            min-height: 300px;
+            padding: 5px;
+            border: 1px solid #000;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        헤더
+    </header>
+    <main>
+        <ul class="list">
+        </ul>
+    </main>
+    <footer>
+        푸터
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+                $.getJSON("http://localhost:3000/list", function (result) {
+                    var html = []
+                    console.log(result);
+                    
+                    $.each(result, function (i, boxoffice) {
+                        html.push('<div class="item-wrap"><a href=#>');
+                        html.push('    <li class="item">');
+                        html.push('        <h3>' + boxoffice.original_title + '</h3>');
+                        html.push('        <p>' + boxoffice.popularity + '</p>');
+                        html.push('    </li>');
+                        html.push('</a></div>');
+                        $('.list').html(html.join(''));
+                    });
+
+
+                })
+            });
+    </script>
+</body>
+</html>

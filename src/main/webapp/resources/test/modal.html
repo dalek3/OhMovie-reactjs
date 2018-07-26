@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>modal</title>
+    <style>
+        .white_content {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            opacity:0;
+            transition: opacity 0.4s ease-in;
+            pointer-events: none;
+        }
+        .white_content:target {
+            opacity:1;
+            pointer-events: auto;
+        }
+        .white_content > div {
+            position: absolute;
+            top:20%;
+            left: 4%;
+            width: 650px;
+            margin: 0px auto;
+            padding: 20px 30px;
+            border-radius: 2px;
+            background-color: white;
+            overflow: auto;	
+        }
+        .content-wrap {
+            display: flex;
+        }
+        .poster {
+            flex: 0 0 30%;
+            flex-wrap: wrap;
+        }
+        .content {
+            padding-left:30px; 
+            line-height: 1.5;
+            flex: 0 0 60%;
+            align-self: center;
+        }
+        .story {
+            padding-left:50px; 
+            line-height: 1.5;
+            flex: 0 0 70%;
+            align-self: center;
+        }
+    </style>
+</head>
+<body>
+    <p><a href="#open">테스트</a>입니다.</p>
+    <div class="white_content" id="open">
+        <div class="wrap">
+            <div class="content-wrap">
+                <div class="poster">
+                    <img src="test.jpg" alt="영화포스터" width="100%">
+                </div>
+                <section class="content">
+                    <a href="#close">닫기</a>
+                    <h3>제목</h3>
+                    <hr>
+                    <p>원제목</p>
+                    <p>평점</p>
+                </section>
+            </div>
+            <hr>
+            <section class="story">
+                <h3>줄거리</h3>
+                <p>줄거리 테스트</p>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
