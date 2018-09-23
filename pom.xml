@@ -163,17 +163,6 @@
                     <mainClass>org.test.int1.Main</mainClass>
                 </configuration>
             </plugin>
-			<plugin>
-				<artifactId>maven-clean-plugin</artifactId>
-				<version>3.1.0</version>
-				<configuration>
-					<filesets>
-						<fileset>
-							<directory>app/build</directory>
-						</fileset>
-					</filesets>
-				</configuration>
-			</plugin>
         </plugins>
     </build>
 	<profiles>
