@@ -3,17 +3,39 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  state = {
+    isLoading: true,
+    groups: []
+  };
+
+  async componentDidMount() {
+    const response = await fetch('/api/users');
+    const body = await response.json();
+    this.setState({ groups: body, isLoading: false });
+  }
+
   render() {
+    const {groups, isLoading} = this.state;
+
+    if (isLoading) {
+      return <p>Loading..</p>;
+    }
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <h1 className="App-title">Welcome to React</h1>
+      </header>
+      <div className="App-intro">
+        <h2>JUG List</h2>
+        {groups.map(group =>
+          <div key={group.id}>
+            {group.name}
+          </div>
+        )}
       </div>
+    </div>
     );
   }
 }

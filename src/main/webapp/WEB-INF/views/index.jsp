@@ -1,0 +1,1 @@
+<%@include file="/resources/front/build/index.html"%>
