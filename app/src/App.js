@@ -1,41 +1,27 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route } from 'react-router-dom';
+import { Home, About, Posts, MovieList } from 'pages';
+import MenuBar from 'components/MenuBar';
 
 class App extends Component {
-  state = {
-    isLoading: true,
-    groups: []
-  };
-
-  async componentDidMount() {
-    const response = await fetch('/api/users');
-    const body = await response.json();
-    this.setState({ groups: body, isLoading: false });
-  }
 
   render() {
-    const {groups, isLoading} = this.state;
-
-    if (isLoading) {
-      return <p>Loading..</p>;
-    }
-
+    
     return (
-      <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1 className="App-title">Welcome to React</h1>
-      </header>
-      <div className="App-intro">
-        <h2>JUG List</h2>
-        {groups.map(group =>
-          <div key={group.id}>
-            {group.name}
-          </div>
-        )}
+      <div>
+        <MenuBar />
+        <Route exact path="/" component={MovieList} />
+        {/* 라우트의 경로에 특정 값을 넣는 방법
+        1. params를 사용하는 방법 
+        1-1. 
+        <Route exact path="/about" component={About}/>
+        <Route path="/about/:name" component={About}/>
+        1-2. */}
+        <Route path="/about/:name?" component={About}/>
+        {/* 2. Query String을 사용하는 방법 */}
+
+        <Route path="/posts" component={Posts}/>
       </div>
-    </div>
     );
   }
 }

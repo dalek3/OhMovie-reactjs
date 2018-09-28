@@ -11,9 +11,10 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	@RequestMapping(value="/", method=RequestMethod.GET)
+	@RequestMapping(value= {"/*", "/*/*"}, method=RequestMethod.GET)
 	public String index() {
-		logger.info("hello");
+		logger.info("hello ohmovie");
 		return "index"; 
 	}
+	
 }
